@@ -1,22 +1,26 @@
 import React from "react";
-function Card() {
+function Card(props) {
   return (
     <div>
-      this is my first component
+      this is me
       <div
         style={{
         
-          width: "250px",
+          width: "150px",
           height: "150px",
-          backgroundColor: "skyblue",
+          backgroundColor: "grey",
           border: "2px solid black ",
+          borderRadius:"10px",
+      margin:"5px"
         }}
       >
         <img
-          src="https://s3.me-central-1.amazonaws.com/com.insurancemarket.wp/2024/06/image-125-40.jpg"
+          src={props.productImage}
           alt=""
-          height={150} width={250}
+          height={50} width={50}
         />
+        <p>{props.productName}</p>
+        <p>{props.productPrice}</p>
 
       </div>
     </div>
