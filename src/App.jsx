@@ -1,105 +1,56 @@
-import React from 'react'
-import Card from './Components/Card'
-import Navbar from './Components/Navbar'
-import Cart from './Components/Cart'
+import React, { useState } from "react";
+import Cardcart from "./Cardcart";
+import Navbar from "./Components/Navbar";
 // import Visitingcard from './Visitingcard'
-
+import MainLanding from "./Components/MainLanding";
+import MyFirsTusestate from './Components/MyFirsTusestate'
+import CheckSyntheticEvent from "./Components/CheckSyntheticEvent";
+import FormValidation from "./Components/FormValidation";
 
 const App = () => {
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+const [search,SetSearch]=useState("")
+  return (
+    <div>
+      {/* <MyFirsTusestate/>
+      <CheckSyntheticEvent/> */}
+      <FormValidation/>
+      {/* <Visitingcard/> */}
+      {/* <Cardcart/> */}
+      <Navbar cart={cart} showCart={showCart} setShowCart={setShowCart} search={search} SetSearch={SetSearch} />
+      {showCart && (
+        <div>
+          <h2>Cart Items</h2>
+          {cart.length === 0 ? (
+            <h3>Cart Empty</h3>
+          ) : (
+            cart.map((item) => (
+              <div
+                key={item.id}
+                style={{
+                 
+                  width: "300px",
+                  border: "1px solid black",
+                  borderRadius: "10px",
+                  overflow: "hidden",
+                  boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+                  padding: "10px",
+                  background: "linear-gradient(to right, #f6f6f6, #f6f6f6)",
+                }}
+              >
+                <img src={item.image} alt="" width={200} height={150} style={{objectFit:"cover"}}/>
+                <h3>{item.title}</h3>
+                <p>{item.category}</p>
+              </div>
+            ))
+          )}
+        </div>
+      )}
 
+      <MainLanding cart={cart} setCart={setCart}  search={search} SetSearch={SetSearch}/>
+    </div>
+  );
+};
 
-return(
-
-
-<div>
-  <Navbar/>
-{/* <Visitingcard/> */}
-<div  style={{
-  display:"flex"
-}}>
- <Card
- productImage="https://m.media-amazon.com/images/I/61Ce-6B6x+L._AC_UY327_FMwebp_QL65_.jpg"
- productName="iphone"
- productPrice={50000}
-  />   
-
-   <Card
-   productImage="https://m.media-amazon.com/images/I/31jQc6x6rjL._SY300_SX300_QL70_FMwebp_.jpg"
-    productName="ipad"
- productPrice={40000}
-   /> 
-   <Card
-   productImage="https://images-eu.ssl-images-amazon.com/images/G/31/img23/Softlines_JWL_SH_GW_Assets/2024/BAU_BTF/Nov/Nov13/Shoes_low._SY116_CB541153107_.jpg"
-    productName="shoes"
- productPrice={2000}
-   /> 
-</div>
-  <br />
-
-  <div style={{
-    display:"flex",
-   
-  }}>
-
-<Cart
-proImage="https://images-eu.ssl-images-amazon.com/images/I/71nQIde8HCS._AC_UL165_SR165,165_.jpg"
-proName="Bacca Bucci Men Lace Up Running Shoes"
-prodisc="-50%"
-proPrice="₹1,499"
-promrp="M.R.P.: ₹2,999"
-  />
-<Cart
-proImage="https://images-eu.ssl-images-amazon.com/images/I/61Tix2-t7iL._AC_UL165_SR165,165_.jpg"
-proName="Apple iPad mini (A17 Pro): Apple Intelligence, 21.08 cm (8.3″)"
-prodisc="-5%"
-proPrice="₹47,399"
-promrp="M.R.P.: ₹49,900"
-  />
-<Cart
-proImage="https://images-eu.ssl-images-amazon.com/images/I/71-LzucxuHL._AC_UL165_SR165,165_.jpg"
-proName="ASIAN Powerkick-01 Men’s Sports Sneakers "
-prodisc="-57%"
-proPrice="₹1,079"
-promrp="M.R.P.: ₹2,499"
-  />
-<Cart
-proImage="https://images-eu.ssl-images-amazon.com/images/I/41iLLpfSWxL._AC_UL165_SR165,165_.jpg"
-proName="Apple Pencil Pro: Advanced Tools, Pixel-Perfect Precision, tilt and Pressure Sensitivity;"
-prodisc="-5%"
-proPrice="₹11,299"
-promrp="M.R.P.: ₹11,900"
-  />
-<Cart
-proImage="https://images-eu.ssl-images-amazon.com/images/I/6157WaPyAyL._AC_UL165_SR165,165_.jpg"
-proName="Bacca Bucci Men's Energy Afterburn Disruptor Sneakers"
-prodisc="-60%"
-proPrice="₹999"
-promrp="M.R.P.: ₹2,499"
-  />
-<Cart
-proImage="https://images-eu.ssl-images-amazon.com/images/I/61kMIKm23VL._AC_UL165_SR165,165_.jpg"
-proName="Apple iPad 11″: A16 chip, 27.69 cm (11″) Model, Liquid Retina Display, 128GB, Wi-Fi"
-prodisc="-10% "
-proPrice="₹34,900"
-promrp="M.R.P.: ₹36,999"
-
-  />
-<Cart
-proImage="https://m.media-amazon.com/images/I/41N27+eJD8L._SY300_SX300_QL70_FMwebp_.jpg"
-proName="Adcom Shuffle Over Ear Wireless Bluetooth Headphones with Built-in Mic"
-prodisc="-76%"
-proPrice="₹949"
-promrp="M.R.P.: ₹3,999"
-  />
-
-  </div>
-
-</div>
-
-
-)
-}
-
-
-
-export default App
+export default App;
