@@ -3,22 +3,41 @@ import Cardcart from "./Cardcart";
 import Navbar from "./Components/Navbar";
 // import Visitingcard from './Visitingcard'
 import MainLanding from "./Components/MainLanding";
-import MyFirsTusestate from './Components/MyFirsTusestate'
+import MyFirsTusestate from "./Components/MyFirsTusestate";
 import CheckSyntheticEvent from "./Components/CheckSyntheticEvent";
 import FormValidation from "./Components/FormValidation";
+import { Route, Routes } from "react-router-dom";
+import About from "./About";
+import Home from "./Home";
+import Contact from "./Contact";
+import Component1 from "./Components/Component1";
+import UserContext from "./UserContext";
+import Navbarr from "./Navbarr";
 
 const App = () => {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
-const [search,SetSearch]=useState("")
+  const [search, SetSearch] = useState("");
+const [theme,SetTheme]=useState(false)
+  // const user="Geeta "
+  function change (){
+
+  }
   return (
-    <div>
+    <div >
       {/* <MyFirsTusestate/>
       <CheckSyntheticEvent/> */}
-      <FormValidation/>
-      {/* <Visitingcard/> */}
-      {/* <Cardcart/> */}
-      <Navbar cart={cart} showCart={showCart} setShowCart={setShowCart} search={search} SetSearch={SetSearch} />
+      {/* <Component1/>
+<UserContext.Provider value={user}>
+  <Navbarr/>
+</UserContext.Provider> */}
+        <Navbar
+        cart={cart}
+        showCart={showCart}
+        setShowCart={setShowCart}
+        search={search}
+        SetSearch={SetSearch}
+      />
       {showCart && (
         <div>
           <h2>Cart Items</h2>
@@ -29,7 +48,6 @@ const [search,SetSearch]=useState("")
               <div
                 key={item.id}
                 style={{
-                 
                   width: "300px",
                   border: "1px solid black",
                   borderRadius: "10px",
@@ -39,7 +57,13 @@ const [search,SetSearch]=useState("")
                   background: "linear-gradient(to right, #f6f6f6, #f6f6f6)",
                 }}
               >
-                <img src={item.image} alt="" width={200} height={150} style={{objectFit:"cover"}}/>
+                <img
+                  src={item.image}
+                  alt=""
+                  width={200}
+                  height={150}
+                  style={{ objectFit: "cover" }}
+                />
                 <h3>{item.title}</h3>
                 <p>{item.category}</p>
               </div>
@@ -47,8 +71,24 @@ const [search,SetSearch]=useState("")
           )}
         </div>
       )}
+      <Routes>
+        <Route path="/" element={  <MainLanding
+        cart={cart}
+        setCart={setCart}
+        search={search}
+        SetSearch={SetSearch}
+      />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/Form" element={<FormValidation />}></Route>
+       
+        <Route path="/CardCart" element={<Cardcart />}></Route>
+      </Routes>
 
-      <MainLanding cart={cart} setCart={setCart}  search={search} SetSearch={SetSearch}/>
+      {/* <Visitingcard/> */}
+      {/* <Cardcart/> */}
+  
+
+ 
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 const Navbar = ({ cart, showCart, setShowCart , search , SetSearch}) => {
   return (
     <nav
@@ -31,31 +31,44 @@ const Navbar = ({ cart, showCart, setShowCart , search , SetSearch}) => {
           marginTop: "20px",
         }}
       >
-        <a style={{   padding:"7px",
+        
+<NavLink to="/" style={{   padding:"7px",
             width:"50px",
             border: "none",
             borderRadius: "10px",
             marginBottom:"25px",
              background: "linear-gradient(to right, #f6cfbe, #b9dcf2)",
              color:"black"
-            }} href="#home">Home</a>
-        <a style={{   padding:"7px",
+             }}>Home</NavLink>
+<NavLink to="/about" style={{   padding:"7px",
             width:"50px",
             border: "none",
             borderRadius: "10px",
             marginBottom:"25px",
              background: "linear-gradient(to right, #f6cfbe, #b9dcf2)",
              color:"black"
-             }} href="#About">About</a>
-        <a style={{   padding:"7px",
+             }}>About</NavLink>
+<NavLink to="/Form" style={{   padding:"7px",
             width:"50px",
             border: "none",
             borderRadius: "10px",
             marginBottom:"25px",
              background: "linear-gradient(to right, #f6cfbe, #b9dcf2)",
              color:"black"
-             }} href="Contact">Contact</a>
 
+
+
+             }}>Form</NavLink>
+
+<NavLink to="/CardCart" style={{   padding:"7px",
+            width:"50px",
+            border: "none",
+            borderRadius: "10px",
+            marginBottom:"25px",
+             background: "linear-gradient(to right, #f6cfbe, #b9dcf2)",
+             color:"black"
+             }}>Cardcart</NavLink>
+             
         <button
           onClick={() => setShowCart(!showCart)}
           style={{
@@ -68,6 +81,19 @@ const Navbar = ({ cart, showCart, setShowCart , search , SetSearch}) => {
           }}
         >
           Cart({cart.length})
+        </button>
+        <button
+         
+          style={{
+            padding:"7px",
+            width:"80px",
+            border: "none",
+            borderRadius: "10px",
+            marginBottom:"25px",
+             background: "linear-gradient(to right, #f6cfbe, #b9dcf2)"
+          }}
+        >
+         Theme
         </button>
       </div>
     </nav>
